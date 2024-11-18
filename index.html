@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M17</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparar el ambiente para aprender y crear un Dashboard funcional.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy exploraremos cómo transformar los datos de nuestra app en información visual y útil mediante un Dashboard de Métricas. ¡Es hora de llevar nuestras aplicaciones al siguiente nivel!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero saber cómo están. Si se sienten listos para analizar y visualizar datos, toquen su barbilla. Si necesitan activar más su mente, estiren ambos brazos hacia arriba."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por estar aquí, listos para aprender y crear algo increíble. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos tres objetivos importantes: 1. Comprender qué es un Dashboard de Métricas y su utilidad. 2. Aprender a implementar un Dashboard en Glide. 3. Diseñar Dashboards efectivos para mostrar información clave y facilitar decisiones informadas."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 4 minutos</div>
+        <div class="subtitle">Explorar cómo las empresas utilizan dashboards para tomar decisiones informadas.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy les quiero mostrar cómo las empresas toman decisiones más inteligentes y estratégicas gracias a herramientas de visualización de datos. Conozcan Qlik Sense, una plataforma que transforma grandes volúmenes de información en dashboards visuales y fáciles de entender."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Demostración de Qlik Sense".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Qlik Sense permite explorar datos de manera intuitiva. Por ejemplo, imaginen tener información sobre ventas: en lugar de analizar hojas de cálculo interminables, pueden ver gráficos que destacan las tendencias y detectar relaciones ocultas entre los datos. Veamos cómo funciona en acción."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Qlik Sense".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Qué les parece? Qlik Sense nos muestra cómo la visualización de datos puede hacer que la información sea más accesible y útil. En nuestra misión, aprenderemos a aplicar principios similares para crear un Dashboard de Métricas en Glide, facilitando decisiones rápidas y efectivas para los usuarios de nuestra app."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 17 minutos</div>
+        <div class="subtitle">Aprender a crear un Tablero de Métricas en Glide Apps.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Introducción al Tablero".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy vamos a aprender cómo crear un Tablero de Métricas en Glide Apps. Este tablero nos ayudará a rastrear estadísticas importantes como el número total de tareas, tareas para hoy, tareas completadas y más. Esto puede sonar complicado, pero no se preocupen. Lo haremos paso a paso, dividiendo todo en partes pequeñas y manejables. Al final de la clase, tendremos un tablero funcional que podremos mostrar con orgullo. ¡Empecemos!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Columnas Rollup".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar a construir, hablemos de una característica importante en Glide: las Columnas Rollup. Curiosamente estas columnas llevan el mismo nombre que la canción 'Roll Up' de la banda de neo soul/indie pop 'Fitz and the Tantrums' lanzada en 2016. Estas son como calculadoras dentro de la aplicación. Resumen los datos para dar totales, conteos o promedios. Por ejemplo, si tienen una lista de tareas, una Columna Rollup puede contar cuántas tareas hay en total, mostrar cuántas son para hoy o incluso decir cuántas están incompletas. Las Columnas Rollup son el secreto detrás de nuestro tablero, así que es importante entender su propósito."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 11 "Tabla de Configuración".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora organicemos los datos que usaremos para el tablero. Glide recomienda mantener todos los cálculos de la aplicación en una tabla separada, a menudo llamada Tabla de Configuración. Abran el Editor de Datos de Glide. Si ya tienen una Tabla de Configuración, hagan clic en ella. Si no, creen una nueva tabla haciendo clic en el botón ‘+’ en la parte superior del Editor de Datos. En esta tabla, almacenaremos las Columnas Rollup que formarán nuestras métricas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (2 minutos):</strong> Proyectar Diapositiva 12 "Total de Tareas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Empecemos creando nuestra primera Columna Rollup: el número total de tareas. En la Tabla de Configuración, hagan clic en el botón ‘+’ junto a las columnas. Seleccionen ‘Rollup’ como el tipo de columna. Nombrémosla stats/total_todos. Añadir stats/ al principio nos ayuda a agrupar todas nuestras métricas. Para la columna de origen, elijan la columna que enumera las tareas. Para el cálculo, seleccionen ‘Count.’ Después de un momento, deberían ver aparecer un número. ¡Ese es el número total de tareas en la aplicación! Acabamos de crear la primera métrica para nuestro tablero."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1.5 minutos):</strong> Proyectar Diapositiva 13 "Revisión Total de Tareas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, observemos nuestra primera Columna Rollup. ¿Muestra el número total de tareas? Si lo hace, ¡fantástico! Si no, no se preocupen, podría ser un pequeño problema de configuración. Pausaremos un momento para solucionar problemas antes de continuar. Esta métrica puede parecer simple, pero es increíblemente útil. Piensen en cualquier aplicación que hayan usado que muestre un resumen o total: así es exactamente como lo hacen."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1.5 minutos):</strong> Proyectar Diapositiva 14 "Tareas para Hoy".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a crear una segunda métrica: el número de tareas para hoy. Añadan otra Columna Rollup en la Tabla de Configuración. Nómbrémosla stats/today_count. Seleccionen la columna que rastrea las fechas límite de las tareas. Para el cálculo, elijan ‘Count (True values only).’ Esta Columna Rollup revisa la lista de tareas y cuenta solo aquellas cuya fecha límite es hoy. Tómense un momento para verificar el resultado."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1.5 minutos):</strong> Proyectar Diapositiva 15 "Tareas Incompletas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "A continuación, creemos una métrica para las tareas incompletas. Añadan otra Columna Rollup. Nómbrémosla stats/incomplete_count. Seleccionen la columna que indica si una tarea está completa. Para el cálculo, elijan ‘Count (False values only).’ Esta métrica muestra cuántas tareas están pendientes, lo cual es perfecto para llevar un control de la carga de trabajo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 8 (1.5 minutos):</strong> Proyectar Diapositiva 16 "Tareas Completadas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, rastreemos las tareas completadas. Añadan otra Columna Rollup. Nómbrémosla stats/complete_count. Usen la misma columna que indica si una tarea está completa. Esta vez, elijan ‘Count (True values only).’ Esta métrica les dará el número total de tareas que han finalizado, ideal para ver el progreso."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 9 (1.5 minutos):</strong> Proyectar Diapositiva 17 "Tareas Asignadas a Mí".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Finalmente, vamos a crear una métrica que cambie según quién haya iniciado sesión. Contaremos las tareas asignadas al usuario actual. Añadan otra Columna Rollup. Nómbrémosla stats/assigned_to_me. Usen la columna que rastrea a quién se asigna una tarea. Para el cálculo, elijan ‘Count (True values for the current user).’ Ahora, esta métrica se actualiza automáticamente dependiendo del usuario."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (2 minutos):</strong> Proyectar Diapositiva 18 "Mostrar Métricas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que hemos creado nuestras métricas, mostrémoslas en la aplicación. Abran el Editor de Diseño y vayan a la pantalla donde quieran el tablero, como la Pantalla de Inicio. Añadan un Componente Contenedor para organizar las métricas. Configurémoslo como ‘Highlight’ para un diseño limpio y profesional."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (1.5 minutos):</strong> Proyectar Diapositiva 19 "Configurar Componentes".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Dentro del contenedor, añadiremos un Componente de Números Grandes para mostrar las métricas claramente. Añadan el Componente de Números Grandes. Enlacen cada métrica a la Columna Rollup correspondiente: Total de Tareas → stats/total_todos, Para Hoy → stats/today_count, Tareas Incompletas → stats/incomplete_count, Tareas Completadas → stats/complete_count, Asignadas a Mí → stats/assigned_to_me. Etiquetemos cada número para que los usuarios entiendan lo que representa."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (2 minutos):</strong> Proyectar Diapositiva 20 "Probar el Tablero".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Finalmente, probemos el tablero. Usen la función ‘Preview As’ en Glide para ver cómo se ven las métricas para diferentes usuarios. Verifiquen que cada número se actualice correctamente cuando añadan, completen o asignen tareas. ¡Y eso es todo! ¡Hemos construido un Tablero de Métricas completamente funcional! Recuerden, esto es solo el comienzo. Pueden personalizarlo para rastrear los datos que necesiten, así que sigan experimentando."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 13 (1 minuto):</strong> Proyectar Diapositiva 21 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy avanzamos mucho en nuestra misión. Comprendimos qué es un Dashboard de Métricas y aprendimos a implementarlo en Glide. Ahora podemos visualizar información clave de forma clara y profesional. ¡Gran trabajo, Genios!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🕺 Actividad 4: State Change ⏰ Tiempo: 1.5 minutos</div>
+        <div class="subtitle">Liberar tensiones y mejorar la concentración mediante movimiento.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 22 "Baile de 30 Segundos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de liberar tensiones. Durante 30 segundos, quiero que escuchen la música y bailen libremente. No importa cómo lo hagan, lo importante es moverse y disfrutar."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Cronómetro - 30 Segundos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 24 "Reflexión sobre el Baile".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Excelente, Genios! Bailar no solo nos ayuda a liberar tensiones, sino que también nos activa y mejora nuestro estado de ánimo. Ahora estamos más energizados para continuar con nuestra misión."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 5: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Reorganizar equipos y preparar el material necesario.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, por favor reúnanse con los mismos equipos con los que han estado desarrollando su aplicación. Es importante mantener la continuidad en su trabajo. Tienen un minuto para organizarse."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 26 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 27 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, cada equipo elija a un representante para recoger las Magic Tablets. Tienen un minuto para asegurarse de que cada equipo esté listo con su dispositivo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 28 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🚀 Actividad 6: Challenge ⏰ Tiempo: 15 minutos</div>
+        <div class="subtitle">Diseñar un Dashboard de Métricas funcional para la aplicación.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 29 "Título del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de poner en práctica lo aprendido y llevar nuestras ideas a papel. Hoy diseñaremos la pantalla de Métricas para nuestra aplicación de seguimiento de tareas. Este diseño será el primer paso para crear un Dashboard funcional que resuma toda la información clave."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 30 "Diseño de Pantalla".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "El objetivo del reto es diseñar una pantalla de Métricas para su aplicación en Glide. Para esto, revisen las tablas de datos que ya tienen y piensen qué información pueden resumir para mostrarla de forma clara y útil. Por ejemplo, podrían incluir el número de tareas completadas, tareas pendientes por día, o progreso semanal. También consideren componentes visuales como gráficos, contadores o tablas para presentar esta información. Recuerden, su Dashboard debe ser una herramienta útil que permita a los usuarios tener un máximo control de la eficiencia de su app. Tómense el tiempo necesario para pensar cómo organizarán los elementos y asegúrense de que su diseño sea intuitivo y fácil de interpretar."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (10 minutos):</strong> Proyectar Diapositiva 31 "Cronómetro - 10 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 32 "Toma una Foto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que han terminado su diseño, tomen una foto del trabajo que han hecho. Este diseño será la base para la próxima misión, donde lo implementaremos en Glide. Tienen un minuto para capturarlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 33 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 34 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, revisemos lo que hemos logrado hoy: 1. Comprendimos qué información es relevante para un Dashboard de Métricas. 2. Diseñamos en papel una pantalla que organiza esta información de manera visual y útil. ¡Gran progreso!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 35 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Excelente trabajo, Genios! Hoy demostraron su creatividad y habilidades al diseñar un Dashboard funcional. Este es un gran paso hacia el desarrollo completo de sus apps. ¡Se merecen Mon-e por su esfuerzo y dedicación!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🎉 Actividad 7: Easter Egg ⏰ Tiempo: 1.5 minutos</div>
+        <div class="subtitle">Gamificar el aprendizaje con una pregunta sorpresa.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 36 "Pregunta Easter Egg".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a divertirnos con una pregunta sorpresa para gamificar nuestro aprendizaje. La pregunta es: ¿En qué año fue lanzada la canción de la banda 'Fitz and The Tantrums' que lleva el mismo nombre que las columnas que usamos en Glide para métricas? Levanten la mano si creen saber la respuesta. Recuerden no decirla en voz alta, simplemente levantar la mano. ¡Llamaré a tres de ustedes para escuchar su respuesta!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 37 "Respuestas de los Estudiantes".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora voy a escuchar las respuestas de tres de ustedes. Tú primero, ven y dime tu respuesta al oído. Ahora tú, segundo, ¿qué opinas? Finalmente tú, tercero, cuéntame tu respuesta."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 38 "Respuesta Correcta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡La respuesta correcta es... 2016! La canción 'Roll Up' de Fitz and The Tantrums fue lanzada ese año. ¡Felicidades a quienes lo adivinaron, han ganado Mon-e por su atención y participación!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🏅 Actividad 8: Honor The Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cerrando la misión con orden y respeto al espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 39 "Honor The Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de honrar nuestro Dojo. Por favor, asegúrense de que todo esté en su lugar. Cada equipo, pase al frente para devolver las Magic Tablets y recojan cualquier material utilizado. Trabajemos juntos para dejar el espacio tan limpio como lo encontramos."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
